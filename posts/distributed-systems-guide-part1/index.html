@@ -208,10 +208,10 @@ It is also fault tolerant and horizontally scalable comparatively much more easi
 <ol>
 <li>Till you&rsquo;re able to maintain acceptable cost/performance ratio. The lower, the better</li>
 </ol>
-<h4 id="7-a-few-imortant-terms">7. A few imortant terms</h4>
+<h4 id="7-a-few-important-terms">7. A few important terms</h4>
 <ol>
 <li><strong>Reliability</strong>: Ability of a system to perform its required functions under stated conditions for a specific period of time. It is a measure of continuity of correct service. Reliability is a safety guarantee stating that nothing bad will happen (under the stated conditions)</li>
-<li><strong>Availibility</strong>: The proportion of time for which a system can perform its function as seen from a client&rsquo;s perspective. It is measured in percentage units w.r.t. time. It is defined as probability value. A <code>99.999% available</code> system means it can go down for <code>max 5.26 minutes/year</code>, or <code>max 26.30 seconds/month</code>. This is also know as <code>5 nines</code> of availability.</li>
+<li><strong>Availability</strong>: The proportion of time for which a system can perform its function as seen from a client&rsquo;s perspective. It is measured in percentage units w.r.t. time. It is defined as probability value. A <code>99.999% available</code> system means it can go down for <code>max 5.26 minutes/year</code>, or <code>max 26.30 seconds/month</code>. This is also know as <code>5 nines</code> of availability.</li>
 <li><strong>Scalability</strong>: The property of a system to be able to meet increased load by adding proprtional amount of resources. In simple sense, this means the system can handle increased amount of load by simply consuming more resources, without letting it&rsquo;s performance get impacted in a negative manner.</li>
 <li><strong>Fault Tolerance</strong>: The ability of a system to detect a fault, and instantaneously switch to the redundant copy of the component with almost negligible downtime. Loss may includes network failures, cpu, ram, disk, power failures, etc.. This mostly relates to the hardware part.</li>
 <li><strong>High Availability</strong>: Similar to fault tolerance, but more cost effective at the expense of comparatively more, but acceptable downtime. This works on the software side, and uses redundant systems and smart fault detection and correction strategies for it to function.</li>
@@ -360,7 +360,7 @@ It is also fault tolerant and horizontally scalable comparatively much more easi
 </li>
 <li>
 <ol start="3">
-<li>This abviously gives best performance.</li>
+<li>This obviously gives best performance.</li>
 </ol>
 </li>
 </ul>
@@ -391,7 +391,7 @@ It is also fault tolerant and horizontally scalable comparatively much more easi
 <h4 id="17-database-storage-engines">17. Database Storage Engines</h4>
 <p>A database storage engine is an internal software component that a database server uses to store, read, update, and delete data in the underlying memory and storage systems. Broadly speaking there are 2 types that are used extensively:</p>
 <ol>
-<li><strong>B-Tree Based Engine</strong>: Uses <code>b-tree</code> data structure to hold data. Performs beter with reads. Example databases: MySQL, Postgre, MongoDB, Couchbase, etc.</li>
+<li><strong>B-Tree Based Engine</strong>: Uses <code>b-tree</code> data structure to hold data. Performs better with reads. Example databases: MySQL, Postgre, MongoDB, Couchbase, etc.</li>
 <li><strong>Log Structured Merge (LSM) Tree Based Engine</strong>: Uses <code>lsm</code> structure to organize data. Performs better with writes. Example databases: Cassandra, BigTable, Elasticsearch, RocksDB, etc.</li>
 </ol>
 <h4 id="18-data-replication-strategies">18. Data Replication Strategies</h4>
@@ -536,7 +536,7 @@ It is also fault tolerant and horizontally scalable comparatively much more easi
 <li>Batch Jobs (Reports, ETL Pipelines, etc.)</li>
 <li>Logging and System Health Monitoring Dashboards</li>
 </ol>
-<h4 id="design-rules-for-buiding-distributed-systems">Design Rules for Buiding Distributed Systems</h4>
+<h4 id="design-rules-for-building-distributed-systems">Design Rules for Building Distributed Systems</h4>
 <ol>
 <li>Design for at least 100% extra scale.</li>
 <li>Avoid bleeding edge technologies. They generally have corner cases and bugs hard to discover in initial days.</li>
@@ -585,7 +585,7 @@ It is also fault tolerant and horizontally scalable comparatively much more easi
 <hr>
 <h5 id="note">Note</h5>
 <p>Although this article gives good introduction to distributed systems, there are many more concepts that are useful in building distributed systems, better. I&rsquo;m working on <strong>part 2</strong> of this guide that will try to include those in a similarly easy to understand manner.</p>
-<p>Drop me a mail at <a href="mailto:nitinbansal85@gmail.com">nitinbansal85@gmail.com</a> or DM me on <a href="https://twitter.com/9wxg1">twitter</a> if you have any suggestions or need any help with software development.</p>
+<p>Drop me a mail at <a href="mailto:contact@nitinbansal.dev">contact@nitinbansal.dev</a> or DM me on <a href="https://twitter.com/9wxg1">twitter</a> if you have any suggestions or need any help with software development.</p>
 <hr>
 <p>That&rsquo;s all, folks ¯\<em>(ツ)</em>/¯</p>
 <h5 id="references">References</h5>
