@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on The Dev Stuff</title>
+    <link>https://www.playingaround-dev.github.io/tags/</link>
+    <description>Recent content in Tags on The Dev Stuff</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 18 Feb 2021 01:00:00 +0530</lastBuildDate><atom:link href="https://www.playingaround-dev.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>distributed-systems</title>
+      <link>https://www.playingaround-dev.github.io/tags/distributed-systems/</link>
+      <pubDate>Thu, 18 Feb 2021 01:00:00 +0530</pubDate>
+      
+      <guid>https://www.playingaround-dev.github.io/tags/distributed-systems/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fundamentals</title>
+      <link>https://www.playingaround-dev.github.io/tags/fundamentals/</link>
+      <pubDate>Thu, 18 Feb 2021 01:00:00 +0530</pubDate>
+      
+      <guid>https://www.playingaround-dev.github.io/tags/fundamentals/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>glossary</title>
+      <link>https://www.playingaround-dev.github.io/tags/glossary/</link>
+      <pubDate>Thu, 18 Feb 2021 01:00:00 +0530</pubDate>
+      
+      <guid>https://www.playingaround-dev.github.io/tags/glossary/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>career</title>
+      <link>https://www.playingaround-dev.github.io/tags/career/</link>
+      <pubDate>Sun, 07 Feb 2021 01:00:00 +0530</pubDate>
+      
+      <guid>https://www.playingaround-dev.github.io/tags/career/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>learnings</title>
+      <link>https://www.playingaround-dev.github.io/tags/learnings/</link>
+      <pubDate>Sun, 07 Feb 2021 01:00:00 +0530</pubDate>
+      
+      <guid>https://www.playingaround-dev.github.io/tags/learnings/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>programming</title>
+      <link>https://www.playingaround-dev.github.io/tags/programming/</link>
+      <pubDate>Sun, 07 Feb 2021 01:00:00 +0530</pubDate>
+      
+      <guid>https://www.playingaround-dev.github.io/tags/programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>work</title>
+      <link>https://www.playingaround-dev.github.io/tags/work/</link>
+      <pubDate>Sun, 07 Feb 2021 01:00:00 +0530</pubDate>
+      
+      <guid>https://www.playingaround-dev.github.io/tags/work/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>build-guide</title>
+      <link>https://www.playingaround-dev.github.io/tags/build-guide/</link>
+      <pubDate>Fri, 05 Feb 2021 21:00:00 +0530</pubDate>
+      
+      <guid>https://www.playingaround-dev.github.io/tags/build-guide/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ci/cd</title>
+      <link>https://www.playingaround-dev.github.io/tags/ci/cd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.playingaround-dev.github.io/tags/ci/cd/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

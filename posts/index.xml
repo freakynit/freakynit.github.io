@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on The Dev Stuff</title>
+    <link>https://www.playingaround-dev.github.io/posts/</link>
+    <description>Recent content in Posts on The Dev Stuff</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 18 Feb 2021 01:00:00 +0530</lastBuildDate><atom:link href="https://www.playingaround-dev.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Distributed Systems Guide</title>
+      <link>https://www.playingaround-dev.github.io/posts/distributed-systems-guide-part1/</link>
+      <pubDate>Thu, 18 Feb 2021 01:00:00 +0530</pubDate>
+      
+      <guid>https://www.playingaround-dev.github.io/posts/distributed-systems-guide-part1/</guid>
+      <description>The aim of this guide is to provide an easy to understand, yet comprehensive introduction to distributed systems, which have become fundamental to modern data processing systems. The target audience for this guide is the people who desire, or are professionally starting to work in distributed systems. The guide might also be useful as a refresher for experienced professionals.   1. What is a distributed system As the name implies, it&amp;rsquo;s a system that is distributed in nature.</description>
+    </item>
+    
+    <item>
+      <title>Learnings from 10&#43; years of my software development work</title>
+      <link>https://www.playingaround-dev.github.io/posts/learnings-from-10-years-of-software-development/</link>
+      <pubDate>Sun, 07 Feb 2021 01:00:00 +0530</pubDate>
+      
+      <guid>https://www.playingaround-dev.github.io/posts/learnings-from-10-years-of-software-development/</guid>
+      <description>After being in this industry for more than a decade now, there are a huge set of learnings that I have gathered.
+From programming microprocessors in assembly language on a dedicated hardware programmer to working on petabyte scale data pipelines, I have gained experience with many different paradigms of programming world.
+Also, from working in a small one-room startup to a global conglomerate, to starting my own, I have also experienced many different organizational aspects and how they shape the entire software development process.</description>
+    </item>
+    
+    <item>
+      <title>Using Gitlab&#39;s free private repo and CI/CD to deploy a static site to Github Pages for free</title>
+      <link>https://www.playingaround-dev.github.io/posts/private-repo-gitlab-cicd-github-pages/</link>
+      <pubDate>Fri, 05 Feb 2021 21:00:00 +0530</pubDate>
+      
+      <guid>https://www.playingaround-dev.github.io/posts/private-repo-gitlab-cicd-github-pages/</guid>
+      <description>Have you ever desired to host your own personal blog, or a website to showcase your work, for free? All this while taking advantage of a globally distributed CDN to speed up the site&amp;rsquo;s delivery to your visitors?
+ Github Pages gives us exactly that!! It give us the ability to host static content (blog/website) for free. We can use that to showcase our work, highlight our achievements, share our resume, setup our personal blog, etc.</description>
+    </item>
+    
+  </channel>
+</rss>
