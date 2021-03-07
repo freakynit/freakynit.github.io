@@ -267,8 +267,7 @@ It is also fault tolerant and horizontally scalable comparatively much more easi
 <h4 id="13-collisions">13. Collisions</h4>
 <ol>
 <li>A collision is said to occur when two activities, which may or may not be full-fledged transactions, attempt to change entities within a system of record.</li>
-<li>There are three fundamental ways (Celko 1999) that two activities can interfere with one another:</li>
-</ol>
+<li>There are three fundamental ways (Celko 1999) that two activities can interfere with one another:
 <ul>
 <li>
 <ol>
@@ -286,6 +285,8 @@ It is also fault tolerant and horizontally scalable comparatively much more easi
 </ol>
 </li>
 </ul>
+</li>
+</ol>
 <h4 id="14-concurrency-control">14. Concurrency Control</h4>
 <ol>
 <li>It deals with the issues involved with allowing multiple people simultaneous access to shared entities, be they objects, data records, or some other representation.</li>
@@ -369,8 +370,7 @@ It is also fault tolerant and horizontally scalable comparatively much more easi
 <h4 id="16-time-based-concurrency-control-strategies">16. Time Based Concurrency Control Strategies</h4>
 <ol>
 <li>These strategies use a transaction’s timestamp to coordinate concurrent access to a data item to ensure serializability. A timestamp is a unique identifier given by DBMS to a transaction that represents the transaction’s start time.</li>
-<li>They ensure that transactions commit in the order dictated by their timestamps. An older transaction should commit before a younger transaction, since the older transaction enters the system before the younger one.</li>
-</ol>
+<li>They ensure that transactions commit in the order dictated by their timestamps. An older transaction should commit before a younger transaction, since the older transaction enters the system before the younger one.
 <ul>
 <li>
 <ol>
@@ -388,6 +388,8 @@ It is also fault tolerant and horizontally scalable comparatively much more easi
 </ol>
 </li>
 </ul>
+</li>
+</ol>
 <h4 id="17-database-storage-engines">17. Database Storage Engines</h4>
 <p>A database storage engine is an internal software component that a database server uses to store, read, update, and delete data in the underlying memory and storage systems. Broadly speaking there are 2 types that are used extensively:</p>
 <ol>
