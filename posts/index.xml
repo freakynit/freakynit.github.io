@@ -5,7 +5,18 @@
     <link>https://www.freakynit.github.io/posts/</link>
     <description>Recent content in Posts on The Dev Stuff</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 18 Feb 2021 01:00:00 +0530</lastBuildDate><atom:link href="https://www.freakynit.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 25 Feb 2021 01:00:00 +0530</lastBuildDate><atom:link href="https://www.freakynit.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kubernetes Handnotes</title>
+      <link>https://www.freakynit.github.io/posts/kubernetes-handnotes/</link>
+      <pubDate>Thu, 25 Feb 2021 01:00:00 +0530</pubDate>
+      
+      <guid>https://www.freakynit.github.io/posts/kubernetes-handnotes/</guid>
+      <description>These are some of the handnotes that I&amp;rsquo;ve prepared over the course of a few years working with kubernetes. Many of these are generally not known well, unless a person has dug deep into the official kubernetes docs.
+These are in no specific order, and are meant to be used as notes for quick, and comparatively detailed reference to kubernetes.
+The target audience for these handnotes are beginners who have familiaried themselves with the core concepts of kubernetes, and now wish to dig deeper for better understanding, and professionals, who want a quick and thorough reference to the most important aspects of kubernetes without referring to official docs again and again.</description>
+    </item>
+    
     <item>
       <title>Distributed Systems Guide</title>
       <link>https://www.freakynit.github.io/posts/distributed-systems-guide-part1/</link>

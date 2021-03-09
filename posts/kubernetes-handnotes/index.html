@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang='en' dir='auto'><head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='These are some of the handnotes that I&rsquo;ve prepared over the course of a few years working with kubernetes. Many of these are generally not known well, unless a person has dug deep into the official kubernetes docs.
+These are in no specific order, and are meant to be used as notes for quick, and comparatively detailed reference to kubernetes.
+The target audience for these handnotes are beginners who have familiaried themselves with the core concepts of kubernetes, and now wish to dig deeper for better understanding, and professionals, who want a quick and thorough reference to the most important aspects of kubernetes without referring to official docs again and again.'>
+<meta name='theme-color' content='#ffcd00'>
+
+<meta property='og:title' content='Kubernetes Handnotes • The Dev Stuff'>
+<meta property='og:description' content='These are some of the handnotes that I&rsquo;ve prepared over the course of a few years working with kubernetes. Many of these are generally not known well, unless a person has dug deep into the official kubernetes docs.
+These are in no specific order, and are meant to be used as notes for quick, and comparatively detailed reference to kubernetes.
+The target audience for these handnotes are beginners who have familiaried themselves with the core concepts of kubernetes, and now wish to dig deeper for better understanding, and professionals, who want a quick and thorough reference to the most important aspects of kubernetes without referring to official docs again and again.'>
+<meta property='og:url' content='https://www.freakynit.github.io/posts/kubernetes-handnotes/'>
+<meta property='og:site_name' content='The Dev Stuff'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='distributed-systems'><meta property='article:tag' content='kubernetes'><meta property='article:tag' content='handnotes'><meta property='article:published_time' content='2021-02-25T01:00:00&#43;05:30'/><meta property='article:modified_time' content='2021-02-25T01:00:00&#43;05:30'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.80.0" />
+
+  <title>Kubernetes Handnotes • The Dev Stuff</title>
+  <link rel='canonical' href='https://www.freakynit.github.io/posts/kubernetes-handnotes/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.ab98e12b.css'><link rel='stylesheet' href='/css/custom.css'><style>
+:root{--color-accent:#ffcd00;}
+</style>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-NDS59NQV9D', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  
+
+</head>
+<body class='page type-posts has-sidebar'>
+
+  <div class='site'><div id='sidebar' class='sidebar'>
+  <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
+
+  <div class='container'><section class='widget widget-about sep-after'>
+  <header>
+    
+    <div class='logo'>
+      <a href='/'>
+        <img src='/images/logo.png'>
+      </a>
+    </div>
+    
+    <h2 class='title site-title '>
+      <a href='/'>
+      The Dev Stuff
+      </a>
+    </h2>
+    <div class='desc'>
+    
+    </div>
+  </header>
+
+</section>
+<section class='widget widget-taxonomy_cloud sep-after'>
+  <header>
+    <h4 class='title widget-title'>Tags</h4>
+  </header>
+
+  <div class='container list-container'>
+  <ul class='list taxonomy-cloud'><li>
+        <a href='/tags/build-guide/' style='font-size:1em'>build-guide</a>
+      </li><li>
+        <a href='/tags/career/' style='font-size:1em'>career</a>
+      </li><li>
+        <a href='/tags/ci/cd/' style='font-size:1em'>ci/cd</a>
+      </li><li>
+        <a href='/tags/distributed-systems/' style='font-size:2em'>distributed-systems</a>
+      </li><li>
+        <a href='/tags/fundamentals/' style='font-size:1em'>fundamentals</a>
+      </li><li>
+        <a href='/tags/glossary/' style='font-size:1em'>glossary</a>
+      </li><li>
+        <a href='/tags/handnotes/' style='font-size:1em'>handnotes</a>
+      </li><li>
+        <a href='/tags/kubernetes/' style='font-size:1em'>kubernetes</a>
+      </li><li>
+        <a href='/tags/learnings/' style='font-size:1em'>learnings</a>
+      </li><li>
+        <a href='/tags/programming/' style='font-size:1em'>programming</a>
+      </li><li>
+        <a href='/tags/work/' style='font-size:1em'>work</a>
+      </li></ul>
+</div>
+
+
+</section>
+</div>
+
+  <div class='sidebar-overlay'></div>
+</div><div class='main'><nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
+    <a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+<button id='sidebar-toggler' class='sidebar-toggler' aria-controls='sidebar'>
+  <span class='screen-reader-text'>Toggle Sidebar</span>
+  <span class='open'><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <line x1="3" y1="12" x2="21" y2="12" />
+  <line x1="3" y1="6" x2="21" y2="6" />
+  <line x1="3" y1="18" x2="21" y2="18" />
+
+</svg>
+</span>
+  <span class='close'><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <line x1="18" y1="6" x2="6" y2="18" />
+  <line x1="6" y1="6" x2="18" y2="18" />
+
+</svg>
+</span>
+</button>
+    <ul><li class='item'>
+        <a href=''></a>
+      </li><li class='item'>
+        <a href='/about/'>About Me</a>
+      </li></ul>
+  </div>
+</nav><div class='header-widgets'>
+        <div class='container'></div>
+      </div>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>The Dev Stuff</p><p class='desc site-desc'></p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>Kubernetes Handnotes</h1>
+      
+
+    </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2021-02-25T01:00:00&#43;05:30'>2021, Feb 25</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+
+</svg>
+19 mins read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  <p>These are some of the handnotes that I&rsquo;ve prepared over the course of a few years working with kubernetes. Many of these are generally not known well, unless a person has dug deep into the official kubernetes docs.</p>
+<p>These are in no specific order, and are meant to be used as notes for quick, and comparatively detailed reference to kubernetes.</p>
+<p>The target audience for these handnotes are beginners who have familiaried themselves with the core concepts of kubernetes, and now wish to dig deeper for better understanding, and professionals, who want a quick and thorough reference to the most important aspects of kubernetes without referring to official docs again and again.</p>
+<p>These are in no way a replacement for kubernetes official docs. They are, for all purposes, the best available resources for learning kubernetes. These handnote just try to provide a better ratio of <em>knowledge gained vs the time taken</em>, compared to the official kubernetes docs.</p>
+<hr>
+<h5 id="resources-covered">Resources covered:</h5>
+<ol>
+<li>Pods</li>
+<li>ReplicaSets</li>
+<li>Controller</li>
+<li>Master Components</li>
+<li>Node components</li>
+<li>Objects</li>
+<li>UID’s</li>
+<li>Namespaces</li>
+<li>Services</li>
+<li>Labels</li>
+<li>Label Selectors</li>
+<li>Field Selectors</li>
+<li>Annotations</li>
+<li>Object Management</li>
+<li>Init Containers</li>
+<li>Secret generator</li>
+<li>Persistent volumes(pv) and Persistent volumes claims(pvc)</li>
+<li>Ingress</li>
+<li>Ingress Controller</li>
+<li>Service discovery</li>
+<li>Endpoint</li>
+<li>Kube proxy</li>
+<li>Kube dns</li>
+<li>Etcd</li>
+</ol>
+<hr>
+<h5 id="pods">Pods</h5>
+<ol>
+<li>Each Pod in a Kubernetes cluster has a unique IP address, even Pods on the same Node.</li>
+<li>Every container in a Pod shares the network namespace, including the IP address and network ports.</li>
+<li>By default, docker uses host-private networking, so containers can talk to other containers only if they are on the same machine.</li>
+<li>Containers inside a Pod can communicate with one another using localhost, and all pods in a cluster can see each other without NAT.</li>
+<li>All containers in the Pod can access the shared volumes, allowing those containers to share data.</li>
+<li>Although each Pod has a unique IP address, those IPs are not exposed outside the cluster without a Service. <em>Services allow your applications to receive traffic</em>.</li>
+</ol>
+<h5 id="replicasets">ReplicaSets</h5>
+<ol>
+<li>Scaling is accomplished by changing the number of replicas in a Deployment</li>
+<li>A <strong>ReplicaSet</strong> might dynamically drive the cluster back to desired state via creation of new Pods to keep your application running</li>
+<li>Kubernetes also supports autoscaling of Pods, but it is outside of the scope of this article. Scaling to zero is also possible, and it will terminate all Pods of the specified Deployment.</li>
+<li>States in a kubernetes replicaset
+<ul>
+<li>
+<ol>
+<li><em>DESIRED</em> : Configured number of replicas</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li><em>CURRENT</em> : Show how many replicas are running now</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li><em>UP-TO-DATE</em> : Number of replicas that were updated to match the desired (configured) state</li>
+</ol>
+</li>
+<li>
+<ol start="4">
+<li><em>AVAILABLE</em> : Shows how many replicas are actually AVAILABLE to the users</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>Updates in kubernetes are versioned, and any <em>deployment update</em> can be reverted to a previous (stable) version.</li>
+</ol>
+<h5 id="controller">Controller</h5>
+<ol>
+<li>A <strong>controller</strong> handles all aspects of pod management including, but not limited to, creation, scheduling, replication, and healing of pods.</li>
+</ol>
+<h5 id="kubernetes-master-components">Kubernetes Master Components</h5>
+<ol>
+<li><strong>kube-apiserver</strong> : Exposes the Kubernetes API. It is designed to scale horizontally</li>
+<li><strong>etcd</strong> : Consistent and highly-available key value store used as Kubernetes’ backing store for all cluster data. Always have a backup plan for etcd’s data for your Kubernetes cluster.</li>
+<li><strong>kube-scheduler</strong> : Schedules newly created pods to run on nodes based on individual and collective resource requirements, hardware/software/policy constraints, affinity and anti-affinity specifications, data locality, inter-workload interference and deadlines.</li>
+<li><strong>kube-controller-manager</strong> : Runs controllers. Each controller includes:
+<ul>
+<li>
+<ol>
+<li><strong>Node controller</strong>: Responsible for noticing and responding when nodes go down.</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li><strong>Replication Controller</strong>: Responsible for maintaining the correct number of pods for every replication controller object in the system.</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li><strong>Endpoints Controller</strong>: Populates the Endpoints object (that is, joins Services &amp; Pods).</li>
+</ol>
+</li>
+<li>
+<ol start="4">
+<li><strong>Service Account &amp; Token Controllers</strong>: Create default accounts and API access tokens for new namespaces.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><strong>Cloud controller manager</strong> : runs controllers that interact with the underlying cloud providers. The cloud-controller-manager binary is an alpha feature introduced in Kubernetes release 1.6. The following controllers have cloud provider dependencies:
+<ul>
+<li>
+<ol>
+<li><strong>Node Controller</strong>: For checking the cloud provider to determine if a node has been deleted in the cloud after it stops responding</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li><strong>Route Controller</strong>: For setting up routes in the underlying cloud infrastructure</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li><strong>Service Controller</strong>: For creating, updating and deleting cloud provider load balancers</li>
+</ol>
+</li>
+<li>
+<ol start="4">
+<li><strong>Volume Controller</strong>: For creating, attaching, and mounting volumes, and interacting with the cloud provider to orchestrate volumes</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h5 id="kubernetes-node-components">Kubernetes Node components</h5>
+<ol>
+<li><strong>kubelet</strong> : An agent that runs on each node in the cluster. It makes sure that containers are running in a pod. It doesn’t manage containers which were not created by Kubernetes.</li>
+<li><strong>Container runtime</strong></li>
+<li><strong>Addons</strong> : Provides cluster features</li>
+<li><strong>DNS</strong> : DNS server. Serves DNS records for Kubernetes services. Containers started by Kubernetes automatically include this DNS server in their DNS searches.</li>
+<li><strong>Web UI</strong></li>
+<li><strong>Container Resource Monitoring</strong></li>
+<li><strong>Cluster-level logging</strong></li>
+</ol>
+<h5 id="kubernetes-objects">Kubernetes Objects</h5>
+<ol>
+<li>They are persistent entities in the Kubernetes system. Kubernetes uses these entities to represent the state of your cluster.</li>
+<li>By creating an object, you’re effectively telling the Kubernetes system what you want your cluster’s workload to look like; this is your cluster’s desired state.</li>
+<li>Every Kubernetes object includes two nested object fields that govern the object’s configuration: the object spec and the object status.
+<ul>
+<li>
+<ol>
+<li><strong>Spec</strong> : It describes your desired state for the object</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li><strong>Status</strong> : It describes the actual state of the object, and is supplied and updated by the Kubernetes system.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>Required fields in an <em>object spec</em> file:
+<ul>
+<li>
+<ol>
+<li><strong>apiVersion</strong></li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li><strong>kind</strong></li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li><strong>metadata</strong></li>
+</ol>
+<ul>
+<li>
+<ol>
+<li><em>name</em>: mandatory</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li><em>uid</em>: mandatory: system provided</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li><em>namespace</em>: optional</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<ol start="4">
+<li><strong>spec</strong></li>
+</ol>
+</li>
+</ul>
+</li>
+<li>All objects in the Kubernetes REST API are unambiguously identified by a <strong>Name</strong> and a <strong>UID</strong>.</li>
+<li><em>Name</em> is a client-provided string that refers to an object in a resource URL, such as <em>/api/v1/pods/some-name</em>. This becomes DNS_NAME?.</li>
+<li>Only one object of a given kind can have a given name at a time. However, if you delete the object, you can make a new object with the same name.</li>
+</ol>
+<h5 id="kubernetes-uids">Kubernetes UID&rsquo;s</h5>
+<ol>
+<li>They are a kubernetes <em>systems-generated strings to uniquely identify objects</em>.</li>
+<li>Every object created over the whole lifetime of a Kubernetes cluster has a <strong>distinct UID</strong>. It is intended to distinguish between historical occurrences of similar entities.</li>
+</ol>
+<h5 id="namespaces">Namespaces</h5>
+<ol>
+<li>Kubernetes supports multiple virtual clusters backed by the same physical cluster. These virtual clusters are called <strong>namespaces</strong>.</li>
+<li>Namespaces are intended for use in environments with many users spread across multiple teams, or projects.</li>
+<li>Namespaces provide a scope for names. <em>Names of resources need to be unique within a namespace, but not across namespaces</em>.</li>
+<li>Namespaces can not be nested inside one another.</li>
+<li>Default namesspaces:
+<ul>
+<li>
+<ol>
+<li><strong>default</strong></li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li><strong>kube-system</strong>: For objects created by the Kubernetes system</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li><strong>kube-public</strong>: Readable by all users (including those not authenticated).</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>If you want to reach a service across namespaces, you need to use the fully qualified domain name (FQDN).</li>
+<li>Default behavior of kubernetes is to lookup a service in local namespace. Service DNS entry is of the form: <strong><!-- raw HTML omitted -->.<!-- raw HTML omitted -->.svc.cluster.local</strong>.</li>
+<li><em>Namespace resources</em> are not themselves in a namespace.</li>
+<li><em>Low-level resources</em>, such as <em>nodes</em> and <em>persistentVolumes</em>, are <strong>not</strong> in any namespace.</li>
+</ol>
+<h5 id="services">Services</h5>
+<ol>
+<li>A <strong>Service</strong> in Kubernetes is an abstraction which defines a logical set of Pods, and a policy by which to access them. Services enable a <em>loose coupling between dependent Pods</em>.</li>
+<li>Although each Pod has a unique IP address, those IPs are not exposed outside the cluster without a Service. <em>Services allow your applications to receive traffic</em>.</li>
+<li>A service is assigned a unique IP address (also called clusterIP).</li>
+<li>This address is tied to the lifespan of the Service, and will not change while the Service is alive</li>
+<li>A Service is backed by a group of Pods, and these pods are exposed through endpoints.</li>
+<li>The Service’s selector will be evaluated continuously and the results will be POSTed to an Endpoints object</li>
+<li>When a Pod dies, it is automatically removed from the endpoints, and new Pods matching the Service’s selector will automatically get added to the endpoints.</li>
+<li>A service IP is <em>completely virtual</em>, it never hits the wire.</li>
+<li>Kubernetes services provides a stable, <strong>virtual IP (VIP)</strong> address.</li>
+<li>Virtual IP(VIP) address means it is not attached to any network interface</li>
+<li>VIP&rsquo;s purpose is to forward traffic to pods</li>
+<li>Keeping the mapping between the VIP and the pods up-to-date is the job of <em>kube-proxy</em>, a process that runs on every node, which queries the API server to learn about new services in the cluster.</li>
+<li>The <em>target for service may not necessarily be a pod</em>. It can be external cluster component, component in some other namespace, non-kubernetes component. Just define your service without the selector attribute.</li>
+<li>With no selector attribute, no endpoints object is created.</li>
+<li>For multi-port services (services that expose more than one port), you must give all of your ports names, so that endpoints can be disambiguated</li>
+<li>Services can be exposed in different ways by specifying a type in the <em>ServiceSpec</em>:
+<ul>
+<li>
+<ol>
+<li><strong>ClusterIP (default)</strong> - Exposes the Service on an internal IP in the cluster. This type makes the Service only reachable from within the cluster.</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li><strong>NodePort</strong> - Exposes the Service on the same port of each selected Node in the cluster using NAT. Makes a Service accessible from outside the cluster using <code>&lt;NodeIP&gt;:&lt;NodePort&gt;</code>. This acts as superset of ClusterIP.</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li><strong>LoadBalancer</strong> - Creates an external load balancer in the current cloud (if supported) and assigns a fixed, external IP to the Service. This acts as  superset of NodePort.</li>
+</ol>
+</li>
+<li>
+<ol start="4">
+<li><strong>ExternalName</strong> - Exposes the Service using an arbitrary name (specified by externalName in the spec) by returning a CNAME record with the name. No proxy is used. This type requires v1.7 or higher of kube-dns.</li>
+</ol>
+</li>
+<li>
+<ol start="5">
+<li>To summarize, <strong>ExternalName</strong> =&gt; is superset of <strong>LoadBalancer</strong> =&gt; is superset of <strong>NodePort</strong> =&gt; is superset of <strong>ClusterIP</strong></li>
+</ol>
+</li>
+</ul>
+</li>
+<li>Difference b/w port, targetPort and nodePort:
+<ul>
+<li>
+<ol>
+<li><strong>Port</strong>: Port number which makes a service visible to other services running within the same cluster</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li><strong>TargetPort</strong>: Port on which service is running</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li><strong>NodePort</strong>: Port on which the service can be accessed from <em>external users</em> using <strong>Kube-Proxy</strong></li>
+</ol>
+</li>
+</ul>
+</li>
+<li>A Service routes traffic across a set of Pods.</li>
+<li>A few notes about <strong>NodePort</strong> type service:
+<ul>
+<li>
+<ol>
+<li>It is <em>not</em> designed for production environments. Use <em>LoadBalancer</em> or <em>Ingress Controller/Resource</em> for same</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>Need to specify extra nodePort attribute to service definition</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>Opens specified (or automatically chosen if not specified) port on every node</li>
+</ol>
+</li>
+<li>
+<ol start="4">
+<li>You can only have once service per port</li>
+</ol>
+</li>
+<li>
+<ol start="5">
+<li>You can only use ports 30000–32767</li>
+</ol>
+</li>
+<li>
+<ol start="6">
+<li>If your Node/VM IP address change, you need to deal with that</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>A few notes about <strong>LoadBalancer</strong> type service:
+<ul>
+<li>
+<ol>
+<li>Best method to expose a service to outside world, if your cloud provider supports it</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>There is no filtering, no routing, etc. This means you can send almost any kind of traffic to it, like HTTP, TCP, UDP, Websockets, gRPC, or whatever.</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>Each service exposed with <em>LoadBalancer</em> will get its own IP address, and you have to pay for a LoadBalancer per exposed service, which can get expensive.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>Use <em>externalIPs</em> in service spec to set an ip address as target of service. This can be outside cluster</li>
+<li>Services have an integrated load-balancer that will distribute network traffic to all Pods of an exposed Deployment. Services will monitor continuously the running Pods using endpoints, to ensure the traffic is sent only to available Pods.</li>
+<li>If you want to reach a service across namespaces, you need to use the fully qualified domain name (FQDN).</li>
+<li>Default behavior of kubernetes is to lookup a service in local namespace. Service DNS entry is of the form: <em>&lt;service-name&gt;.&lt;namespace-name&gt;.svc.cluster.local</em>.</li>
+<li>Kubernetes offers a DNS <strong>cluster addon service</strong> that automatically assigns dns names to other services.</li>
+<li>A few notes about <strong>Headless services</strong>:
+<ul>
+<li>
+<ol>
+<li>When you don’t need or want load-balancing and a single service IP.</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>Specify <em>None</em> as the <em>clusterIP</em> value.</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>Allows developers to reduce coupling to the Kubernetes system by allowing them freedom to do discovery their own way.</li>
+</ol>
+</li>
+<li>
+<ol start="4">
+<li>Cluster IP is not allocated.</li>
+</ol>
+</li>
+<li>
+<ol start="5">
+<li>kube-proxy does not handle these services.</li>
+</ol>
+</li>
+<li>
+<ol start="6">
+<li>There is no load balancing or proxying done by the platform for them.</li>
+</ol>
+</li>
+<li>
+<ol start="7">
+<li>If selectors are defined, the endpoints controller creates Endpoints records in the API, and modifies the DNS configuration to return A records (addresses) that point directly to the Pods backing the Service.</li>
+</ol>
+</li>
+<li>
+<ol start="8">
+<li>If selectors are not defined, no <em>endpoints</em> objects are created. But, <em>CNAME</em> records for <em>ExternalName</em> type services are created and A records for any <em>Endpoints</em> that share a name with the service, for all other types.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h5 id="labels">Labels</h5>
+<ol>
+<li>Labels can be attached to objects at creation time or later on. also, they can be modified at any time.</li>
+<li>Labels are used to specify identifying attributes of objects.</li>
+<li><em>The name segment</em> is <strong>required</strong> and must be <em>63 characters or less</em>.</li>
+<li>The <strong>prefix</strong> must be a DNS subdomain: a series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/).</li>
+<li>Labels are used to specify <strong>identifying attributes of objects</strong>. <em>Non-identifying information</em> should be recorded using <strong>annotations</strong>.</li>
+<li>If the prefix is omitted, the label Key is presumed to be private to the user.</li>
+<li>The <strong>kubernetes.io/</strong> and <strong>k8s.io/</strong> prefixes are reserved for Kubernetes core components.</li>
+<li>Valid label values must be 63 characters or less. They could be empty too.</li>
+</ol>
+<h5 id="label-selectors">Label Selectors</h5>
+<ol>
+<li>The client, or a user can identify a set of objects. The <strong>label selector</strong> is the core grouping primitive in Kubernetes.</li>
+<li>Following <em>types of label selectors</em> are supported: <strong>equality-based</strong> and <strong>set-based</strong>.
+<ul>
+<li>
+<ol>
+<li>Equality based label selectors:</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>Set based label selectors:</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>Equality based label selectors:
+<ul>
+<li>
+<ol>
+<li>Operators allowed: <code>=,==,!=</code></li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>These can be specified as:</li>
+</ol>
+<ul>
+<li>
+<ol>
+<li>New line terminated:</li>
+</ol>
+</li>
+</ul>
+<pre><code>environment = production
+tier != frontend
+</code></pre><ul>
+<li>
+<ol start="2">
+<li>Comma separated:</li>
+</ol>
+</li>
+</ul>
+<pre><code>environment=production,tier!=frontend
+</code></pre></li>
+</ul>
+</li>
+<li>Set based label selectors:
+<ul>
+<li>
+<ol>
+<li>Operators allowed: <code>in, notin and exists</code> (only the key identifier)</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>Examples:</li>
+</ol>
+<pre><code>environment in (production, qa)
+tier notin (frontend, backend)
+partition
+!partition
+partition,environment notin (qa)
+&gt;&gt;&gt; Above one selects resources with a partition key(no matter the value) and with environment different than  qa
+</code></pre></li>
+</ul>
+</li>
+<li><em>Set-based</em> label selectors can be mixed with <em>equality-based</em> selectors. Example:</li>
+</ol>
+<pre><code>partition in (customerA, customerB),environment!=qa
+</code></pre><ol start="6">
+<li>Label selectors can be clubbed with API calls as query params and kubectl commands to <em>filter the returned results</em>. Examples:</li>
+</ol>
+<pre><code>API: ?labelSelector=environment+in+%28production%2Cqa%29%2Ctier+in+%28frontend%29
+Kubectl: kubectl get pods -l 'environment in (production),tier in (frontend)'
+</code></pre><ol start="7">
+<li><em>Service</em> and <em>ReplicationController</em> does NOT support <em>set based label selectors</em>.</li>
+<li>Newer resources, such as <em>Job</em>, <em>Deployment</em>, <em>Replica Set</em>, and <em>Daemon Set</em>, support set-based label selectors.</li>
+</ol>
+<h5 id="field-selectors">Field Selectors</h5>
+<ol>
+<li>They let you select Kubernetes resources based on the value of one or more resource fields. Examples:</li>
+</ol>
+<pre><code>status.phase=Pending
+kubectl get pods --field-selector status.phase=Running
+</code></pre><ol start="2">
+<li>Supported field selectors vary by Kubernetes resource type.</li>
+<li>All resource types support the <em>metadata.name</em> and <em>metadata.namespace</em> fields.</li>
+<li>Using unsupported field selectors produces an error.</li>
+<li>Multiple resources can be filtered in one go. Also, multiple field selectors can be given using comma as separator. Example:</li>
+</ol>
+<pre><code>kubectl get statefulsets,services --field-selector=status.phase!=Running,spec.restartPolicy=Always
+</code></pre><h5 id="annotations">Annotations</h5>
+<ol>
+<li>They store <em>non-identifying object data</em>. They <em>cannot</em> be used to target/select objects based on their value(s).</li>
+<li>The <em>metadata</em> in an annotation can be small or large, structured or unstructured, and can include characters not permitted by labels.</li>
+<li>Annotations have the <em>same syntax as labels</em>.</li>
+</ol>
+<h4 id="kubernetes-object-management">Kubernetes Object Management</h4>
+<p>Following are the 3 ways to interact with kubernetes objects:</p>
+<ol>
+<li>Using <strong>Imperative commands</strong>: They operate on <em>Live objects</em></li>
+<li>Using <strong>Imperative object configuration</strong>: They operate on <em>Individual files</em></li>
+<li>Using <strong>Declarative object configuration</strong>: They operate on <em>Directories of files</em></li>
+</ol>
+<h5 id="imperative-commands">Imperative commands</h5>
+<ol>
+<li>Used with kubectl with resource name in the command</li>
+</ol>
+<h5 id="imperative-object-configuration">Imperative object configuration</h5>
+<ol>
+<li>Used with kubectl with operation(create, replace, etc.) and single object config file.</li>
+<li>The object config file specified must contain a full definition of the object in YAML or JSON format.</li>
+<li>Multiple files can also be specified. Example:</li>
+</ol>
+<pre><code>kubectl delete -f nginx.yaml -f redis.yaml
+</code></pre><h5 id="declarative-object-configuration">Declarative object configuration</h5>
+<ol>
+<li>Operates on object configuration files stored locally.</li>
+<li>The user does not define the operations to be taken on the files.</li>
+<li>Create, update, and delete operations are automatically detected per-object by kubectl.</li>
+<li>Uses <strong>patch</strong> operation to preserve changes made by other writers, while applying new changes (<em>diffs only</em>).</li>
+<li>To see what changes are going to be made, use:</li>
+</ol>
+<pre><code>kubectl diff -f configs/
+</code></pre><ol start="6">
+<li>To apply the changes:</li>
+</ol>
+<pre><code>kubectl apply -f configs/
+</code></pre><ol start="7">
+<li>Use command line flag <strong>-R</strong> to process directories recursively.</li>
+<li>These files are known as resource configs.</li>
+</ol>
+<h5 id="init-containers">Init Containers</h5>
+<ol>
+<li>They are <em>specialized containers that run before app containers</em>.</li>
+<li>Thwy can contain utilities or setup scripts, not present in the app image.</li>
+<li>They always run to completion.</li>
+<li>Each one must complete successfully before the next one is started.</li>
+<li><em>Custom containers</em> can be specified as <strong>initContainers</strong> using <em>initContainers field of PodSpec</em>.</li>
+<li>Almost exactly same as regular containers in all aspects of the <em>specs</em> object.</li>
+<li>Does not support readiness probes as they must run to completion before the pod can be ready.</li>
+<li>They are started <strong>after</strong> network and volumes are initialized.</li>
+<li>Changes to the <em>init container spec</em> are limited to the container image field.</li>
+<li>The <strong>activeDeadlineSeconds</strong> is applicable on both types of containers.</li>
+<li>App container image changes only restarts the app container, not the init containers. For that, init container image needs to changed.</li>
+</ol>
+<h4 id="secret-generator-kustomizationyaml">Secret generator: kustomization.yaml</h4>
+<ol>
+<li>A Secret is an object that stores a piece of sensitive data like a password or key.</li>
+<li>Since 1.14, kubectl supports the management of kubernetes objects using a kustomization file.</li>
+<li>You can create a secret by generators in <strong>kustomization.yaml</strong>.</li>
+</ol>
+<h4 id="persistent-volumespv-and-persistent-volumes-claimspvc">Persistent volumes(pv) and Persistent volumes claims(pvc)</h4>
+<ol>
+<li>Use <strong>ReadWriteMany</strong> and not <strong>ReadWriteOnce</strong> when using shared volume.</li>
+<li><em>Access control</em>: <strong>gid(group id)</strong> can be assigned to the created volume to <em>restrict access</em> to specific pods with the same gid.</li>
+<li>A <strong>PersistentVolume (PV)</strong> is a piece of storage in the cluster that has been manually provisioned by an administrator, or dynamically provisioned by kubernetes using a <strong>StorageClass</strong>.</li>
+<li>A <strong>PersistentVolumeClaim (PVC)</strong> is a request for storage by a user that can be fulfilled by a <em>Persistent Volume</em>.</li>
+<li>PersistentVolumes and PersistentVolumeClaims are independent from Pod lifecycles and preserve data through restarting, rescheduling, and even deleting Pods.</li>
+<li>Many cluster environments have a default StorageClass installed. When a StorageClass is not specified in the PersistentVolumeClaim, the cluster’s default StorageClass is used instead.</li>
+<li>In local clusters with default storage class (hostPath), data is saved in node&rsquo;s <strong>/tmp</strong> directory. Hence, could be lost on reboot.</li>
+</ol>
+<h4 id="kubernetes-secret-object-type">Kubernetes <em>Secret</em> object type</h4>
+<ol>
+<li>Stores a piece of sensitive data like a password or key.</li>
+</ol>
+<h4 id="dns">DNS</h4>
+<ol>
+<li>Kubernetes offers a DNS <strong>cluster addon service</strong> that automatically assigns dns names to other services.</li>
+<li>To check whether the same is running on your cluster or not, use following:</li>
+</ol>
+<pre><code>kubectl get services kube-dns --namespace=kube-system
+</code></pre><h4 id="ingress">Ingress</h4>
+<ol>
+<li>An API object that manages external access to the services in a cluster, typically HTTP.</li>
+<li>Ingress can provide load balancing, SSL termination and name-based virtual hosting.</li>
+<li>Kind of like a reverse proxy</li>
+<li>An Ingress can be configured to give services externally-reachable URLs, load balance traffic, terminate SSL, and offer name based virtual hosting.</li>
+<li>An Ingress does not expose arbitrary ports or protocols. Exposing services other than HTTP and HTTPS to the internet typically uses a service of type <code>Service.Type=NodePort</code> or <code>Service.Type=LoadBalancer</code>.</li>
+<li>You must have an <strong>Ingress controller</strong> to satisfy an Ingress. <em>Only creating an Ingress resource has no effect</em>.</li>
+<li>Note that NOT all ingress controllers support the full spec. Be careful while choosing.</li>
+<li>It supports TLS.</li>
+<li>Supports load balancing. A few of the common algorithms are supported. For others, service loadbalancer can be used.</li>
+<li>Health checks not exposed by default. But, readiness probes can be used.</li>
+<li>Cross availability zones deployments can be done, but depends on cloud provider support. Refer <strong>federation documentation</strong> for details on deploying <em>Ingress in a federated cluster</em>.</li>
+<li>Types of Ingress:
+<ul>
+<li>
+<ol>
+<li><em>Single Service Ingress</em>: Expose a single service. No host and path mapping</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li><em>Sample Fanout</em>: Exposes multiple services using path-only mapping</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li><em>Name based virtual hosting</em>: Uses domain and path mappings</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>At least on GKE, spins up a L7 layer HTTP load balancer, hence, is non-protocol agnostic.</li>
+<li>Lot of available ingress controllers: Google Cloud Load Balancer, Nginx, Contour, Istio, and more.</li>
+</ol>
+<h4 id="ingress-controller">Ingress Controller</h4>
+<ol>
+<li>An Ingress Controller listens to the Kubernetes API for <em>Ingress resources</em> and then handle requests that match them.</li>
+<li>Can technically be any system capable of reverse proxying, but the most common is Nginx.</li>
+<li>Nginx controller needs a backend. Other controllers <em>might</em> not need one.</li>
+<li>An Ingress with no rules sends all traffic to a single default backend.</li>
+<li>The default backend is typically a configuration option of the Ingress controller and is not specified in your Ingress resources</li>
+</ol>
+<h4 id="service-discovery">Service discovery</h4>
+<p>Following are the 2 ways in which service discovery can be provisioned:</p>
+<ol>
+<li>Using environment variables</li>
+<li>DNS (recommended)</li>
+</ol>
+<h4 id="environment-variables---for-service-discovery">Environment variables - for service discovery</h4>
+<ol>
+<li>kubelet exposes environment variables of the form {SVCNAME}_{SOME_NAME}. Example, for a redis service with cluser ip of <em>10.0.0.11</em>:</li>
+</ol>
+<pre><code>REDIS_MASTER_SERVICE_HOST=10.0.0.11
+REDIS_MASTER_SERVICE_PORT=6379
+REDIS_MASTER_PORT=tcp://10.0.0.11:6379
+REDIS_MASTER_PORT_6379_TCP=tcp://10.0.0.11:6379
+REDIS_MASTER_PORT_6379_TCP_PROTO=tcp
+REDIS_MASTER_PORT_6379_TCP_PORT=6379
+REDIS_MASTER_PORT_6379_TCP_ADDR=10.0.0.11
+</code></pre><h4 id="dns---for-service-discovery">DNS - for service discovery</h4>
+<ol>
+<li>It&rsquo;s a cluster add-on.</li>
+<li>The DNS server <em>watches the Kubernetes API</em> for new <em>services</em>, and creates a set of DNS records for each.</li>
+<li>For service <em>my-service</em> in namespace <em>my-ns</em>, a DNS record for <em>my-service.my-ns</em> is created.</li>
+<li>No need to specify namespace, if pods belong to the same.</li>
+<li>The Kubernetes DNS server is the only way to access services of type ExternalName.</li>
+</ol>
+<h4 id="endpoint">Endpoint</h4>
+<ol>
+<li>An <strong>Endpoint</strong> is an <em>object-oriented representation of a REST API endpoint</em> that is populated on the Kubernates API server. Thus, the <em>endpoint</em> in terms of Kubernetes is the way to access its resource (e.g. a Pod) - the resource behind the &lsquo;endpoint&rsquo;.</li>
+<li>Contains <strong>EndpointSubset</strong> array.</li>
+<li><em>EndpointSubset</em> is a group of addresses with a common set of ports. The expanded set of endpoints is the <em>cartesian product of Addresses x Ports</em>.</li>
+<li><strong>EndpointAddress</strong> of <em>EndpointSubset</em> may <strong>NOT</strong> be loopback (127.0.0.0/8), link-local (169.254.0.0/16), or link-local multicast ((224.0.0.0/24).</li>
+<li><strong>IPv6</strong> is also accepted, but not fully supported on all platforms.</li>
+<li>The Service’s selector is continuously evaluated, and the results are <em>POSTed</em> to an endpoints object</li>
+<li>When a Pod dies, it is automatically removed from the endpoints, and new pods matching the service’s selector are automatically added to the endpoints.</li>
+<li><em>Endpoints</em> track the IP addresses of the objects the service send traffic to.</li>
+<li>And endpoint be loosely coupled with a service by keeping service&rsquo;s and endpoint&rsquo;s name same. See <a href="https://kubernetes.io/docs/concepts/services-networking/service/#services-without-selectors">https://kubernetes.io/docs/concepts/services-networking/service/#services-without-selectors</a> for more.</li>
+<li>With no selector attribute mentioned (is a service), no endpoints object is created.</li>
+</ol>
+<h4 id="kube-proxy">Kube proxy</h4>
+<ol>
+<li>It&rsquo;s a special daemon (application) running on every worker node.</li>
+<li>Can run in two modes, configurable with <code>--proxy-mode</code> command line switch:
+<ul>
+<li>
+<ol>
+<li><em>userspace</em></li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li><em>iptables</em></li>
+</ol>
+</li>
+</ul>
+</li>
+<li>For higher throughput and better latency, use <em>iptables</em> proxy mode.</li>
+<li><em>Not</em> IPv6 ready.</li>
+<li>Maintains network rules and performs connection forwarding.</li>
+<li>This is useful for:
+<ul>
+<li>
+<ol>
+<li>Debugging your services, or connecting to them directly from your laptop for some reason</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>Allowing internal traffic, displaying internal dashboards, etc.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="kube-dns">Kube dns</h4>
+<ol>
+<li>This allows accessing K8s services using their names directly, rather than <em>VIP:PORT</em> combination.</li>
+<li>When you use kube-dns, K8s <em>injects</em> certain nameservice lookup configuration into new pods that allows you to query the DNS records in the cluster.</li>
+<li>kube-dns creates an <em>internal cluster DNS zone</em> which is used for DNS and service discovery. This means that we can access the services from inside the pods via the service names directly. Example:</li>
+</ol>
+<pre><code>curl -I nginx-svc:8080
+</code></pre><ol start="4">
+<li>You can use following to see node dns config as setup by kube-dns:</li>
+</ol>
+<pre><code>cat /etc/resolv.conf
+&gt; search default.svc.cluster.local svc.cluster.local cluster.local google.internal c.kube-blog.internal
+  nameserver 10.32.0.10
+  options ndots:5
+</code></pre><ol start="5">
+<li>If the service is created in default namespace, it can be accessed using the <em>cluster internal DNS name</em>, too:</li>
+</ol>
+<pre><code>curl -I nginx-svc.default.svc.cluster.local:8080
+</code></pre><h4 id="etcd">Etcd</h4>
+<ol>
+<li>This is a consistent and highly-available key value store, used as kubernetes’ backing store for all cluster data.</li>
+<li>Make sure to always have a backup plan for etcd’s data for your kubernetes cluster.</li>
+<li>All data is saved in etc as registries. Example:</li>
+</ol>
+<pre><code>/registry/services
+/registry/events
+/registry/secrets
+/registry/minions
+</code></pre><ol start="4">
+<li>Following command can be used to query data in etcd:</li>
+</ol>
+<pre><code>etcdctl --ca-file=/etc/etcd/ca.pem get /registry/services/endpoints/default/kubernetes
+</code></pre><p>Drop me a mail at <a href="mailto:contact@nitinbansal.dev">contact@nitinbansal.dev</a> or DM me on <a href="https://twitter.com/9wxg1">twitter</a> if you have any suggestions or need any help with software development.</p>
+<hr>
+<p>That&rsquo;s all, folks ¯\<em>(ツ)</em>/¯</p>
+<h3 id="references">References</h3>
+<ol>
+<li><a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/expose/expose-intro/">https://kubernetes.io/docs/tutorials/kubernetes-basics/expose/expose-intro/</a></li>
+<li><a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands</a></li>
+<li><a href="https://kubernetes.io/docs/tasks/access-application-cluster/communicate-containers-same-pod-shared-volume/">https://kubernetes.io/docs/tasks/access-application-cluster/communicate-containers-same-pod-shared-volume/</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/">https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/</a></li>
+<li>Examples:</li>
+</ol>
+<ul>
+<li><a href="https://github.com/kubernetes/website/blob/master/content/en/examples/service/nginx-service.yaml">https://github.com/kubernetes/website/blob/master/content/en/examples/service/nginx-service.yaml</a></li>
+<li><a href="https://github.com/kubernetes/website/blob/master/content/en/examples/service/networking/run-my-nginx.yaml">https://github.com/kubernetes/website/blob/master/content/en/examples/service/networking/run-my-nginx.yaml</a></li>
+<li><a href="https://github.com/kubernetes/examples/blob/master/mysql-wordpress-pd/wordpress-deployment.yaml">https://github.com/kubernetes/examples/blob/master/mysql-wordpress-pd/wordpress-deployment.yaml</a></li>
+</ul>
+<ol start="6">
+<li><a href="https://stackoverflow.com/questions/54923806/why-do-i-get-unbound-immediate-persistentvolumeclaims-on-minikube">https://stackoverflow.com/questions/54923806/why-do-i-get-unbound-immediate-persistentvolumeclaims-on-minikube</a></li>
+<li><a href="https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/">https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/</a></li>
+<li><a href="https://github.com/containous/traefik">https://github.com/containous/traefik</a></li>
+<li><a href="https://blog.openshift.com/kubernetes-services-by-example/">https://blog.openshift.com/kubernetes-services-by-example/</a></li>
+<li><a href="http://containerops.org/2017/01/30/kubernetes-services-and-ingress-under-x-ray/">http://containerops.org/2017/01/30/kubernetes-services-and-ingress-under-x-ray/</a></li>
+<li><a href="https://matthewpalmer.net/kubernetes-app-developer/articles/kubernetes-ingress-guide-nginx-example.html">https://matthewpalmer.net/kubernetes-app-developer/articles/kubernetes-ingress-guide-nginx-example.html</a></li>
+<li><a href="https://medium.com/@cashisclay/kubernetes-ingress-82aa960f658e">https://medium.com/@cashisclay/kubernetes-ingress-82aa960f658e</a></li>
+<li><a href="https://github.com/kubernetes/kops/tree/master/addons">https://github.com/kubernetes/kops/tree/master/addons</a></li>
+</ol>
+
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'><div class='tags'><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
+  <line x1="7" y1="7" x2="7" y2="7"/>
+
+</svg>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/distributed-systems/'>distributed-systems</a>, <a class='tag' href='/tags/kubernetes/'>kubernetes</a>, <a class='tag' href='/tags/handnotes/'>handnotes</a></div>
+
+  </div>
+</footer>
+
+
+</article>
+
+<nav class='entry-nav'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/posts/distributed-systems-guide-part1/'>
+        <span aria-hidden='true'><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+
+</svg>
+ Previous</span>
+        <span class='screen-reader-text'>Previous post: </span>Distributed Systems Guide</a>
+    </div></div>
+</nav>
+
+
+
+
+      </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
+        <a href='https://github.com/freakynit' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+
+</svg>
+</a>
+      </li><li>
+        <a href='https://twitter.com/9wxg1' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Twitter account in new tab</span><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <title>Twitter icon</title>
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+
+</svg>
+</a>
+      </li><li>
+        <a href='mailto:nitinbansal85@gmail.com' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Contact via Email</span><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline>
+</svg>
+</a>
+      </li><li>
+        <a href='https://linkedin.com/in/nitinbansal85' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Linkedin account in new tab</span><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</section><div class='copyright'>
+  <p> &copy; 2021 Nitin Bansal </p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__assets_js_src="/assets/js/"</script>
+
+<script src='/assets/js/main.c3bcf2df.js'></script><script src='/js/custom.js'></script>
+
+</body>
+
+</html>
+

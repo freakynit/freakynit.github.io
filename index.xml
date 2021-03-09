@@ -5,7 +5,18 @@
     <link>https://www.freakynit.github.io/</link>
     <description>Recent content on The Dev Stuff</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 18 Feb 2021 01:00:00 +0530</lastBuildDate><atom:link href="https://www.freakynit.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 25 Feb 2021 01:00:00 +0530</lastBuildDate><atom:link href="https://www.freakynit.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kubernetes Handnotes</title>
+      <link>https://www.freakynit.github.io/posts/kubernetes-handnotes/</link>
+      <pubDate>Thu, 25 Feb 2021 01:00:00 +0530</pubDate>
+      
+      <guid>https://www.freakynit.github.io/posts/kubernetes-handnotes/</guid>
+      <description>These are some of the handnotes that I&amp;rsquo;ve prepared over the course of a few years working with kubernetes. Many of these are generally not known well, unless a person has dug deep into the official kubernetes docs.
+These are in no specific order, and are meant to be used as notes for quick, and comparatively detailed reference to kubernetes.
+The target audience for these handnotes are beginners who have familiaried themselves with the core concepts of kubernetes, and now wish to dig deeper for better understanding, and professionals, who want a quick and thorough reference to the most important aspects of kubernetes without referring to official docs again and again.</description>
+    </item>
+    
     <item>
       <title>Distributed Systems Guide</title>
       <link>https://www.freakynit.github.io/posts/distributed-systems-guide-part1/</link>
@@ -43,9 +54,8 @@ Also, from working in a small one-room startup to a global conglomerate, to star
       
       <guid>https://www.freakynit.github.io/about/</guid>
       <description>Hi there, Nice to meet you. My name is Nitin Bansal. I&amp;rsquo;m from Punjab, India.
- Professionaly, I mostly work on distributed systems. Occasionally I have worked on other systems too, mainly on the dashboard side.
-Technologies that I have worked with include: Java, Kafka, BigQuery, MongoDB, Redis, Cassandra, Elasticsearch, Jenkins, Docker, Kubernetes, Python, NodeJS, Javascript, AWS, Numpy, Pandas, Apache Airflow, Apache Spark, and more.
- On personal side, I&amp;rsquo;m deeply interested in technology.</description>
+ Professionaly, I have worked on distributed systems most often. Occasionally, and as when needed, I have worked on other other systems too, including frontend and mobile.
+Technologies that I have worked with include: Java, Kafka, BigQuery, MongoDB, Redis, Cassandra, Elasticsearch, Jenkins, Docker, Kubernetes, Python, NodeJS, Javascript, AWS, Numpy, Pandas, Apache Airflow, Apache Spark, and a few others.</description>
     </item>
     
   </channel>
