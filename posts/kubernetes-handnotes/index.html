@@ -195,7 +195,7 @@ if (!doNotTrack) {
 <p>The target audience for these handnotes are beginners who have familiaried themselves with the core concepts of kubernetes, and now wish to dig deeper for better understanding, and professionals, who want a quick and thorough reference to the most important aspects of kubernetes without referring to official docs again and again.</p>
 <p>These are in no way a replacement for kubernetes official docs. They are, for all purposes, the best available resources for learning kubernetes. These handnote just try to provide a better ratio of <em>knowledge gained vs the time taken</em>, compared to the official kubernetes docs.</p>
 <hr>
-<h5 id="resources-covered">Resources covered:</h5>
+<h4 id="resources-covered">Resources covered:</h4>
 <ol>
 <li>Pods</li>
 <li>ReplicaSets</li>
@@ -223,7 +223,7 @@ if (!doNotTrack) {
 <li>Etcd</li>
 </ol>
 <hr>
-<h5 id="pods">Pods</h5>
+<h4 id="pods">Pods</h4>
 <ol>
 <li>Each Pod in a Kubernetes cluster has a unique IP address, even Pods on the same Node.</li>
 <li>Every container in a Pod shares the network namespace, including the IP address and network ports.</li>
@@ -232,7 +232,7 @@ if (!doNotTrack) {
 <li>All containers in the Pod can access the shared volumes, allowing those containers to share data.</li>
 <li>Although each Pod has a unique IP address, those IPs are not exposed outside the cluster without a Service. <em>Services allow your applications to receive traffic</em>.</li>
 </ol>
-<h5 id="replicasets">ReplicaSets</h5>
+<h4 id="replicasets">ReplicaSets</h4>
 <ol>
 <li>Scaling is accomplished by changing the number of replicas in a Deployment</li>
 <li>A <strong>ReplicaSet</strong> might dynamically drive the cluster back to desired state via creation of new Pods to keep your application running</li>
@@ -263,11 +263,11 @@ if (!doNotTrack) {
 </li>
 <li>Updates in kubernetes are versioned, and any <em>deployment update</em> can be reverted to a previous (stable) version.</li>
 </ol>
-<h5 id="controller">Controller</h5>
+<h4 id="controller">Controller</h4>
 <ol>
 <li>A <strong>controller</strong> handles all aspects of pod management including, but not limited to, creation, scheduling, replication, and healing of pods.</li>
 </ol>
-<h5 id="kubernetes-master-components">Kubernetes Master Components</h5>
+<h4 id="kubernetes-master-components">Kubernetes Master Components</h4>
 <ol>
 <li><strong>kube-apiserver</strong> : Exposes the Kubernetes API. It is designed to scale horizontally</li>
 <li><strong>etcd</strong> : Consistent and highly-available key value store used as Kubernetes’ backing store for all cluster data. Always have a backup plan for etcd’s data for your Kubernetes cluster.</li>
@@ -321,7 +321,7 @@ if (!doNotTrack) {
 </ul>
 </li>
 </ol>
-<h5 id="kubernetes-node-components">Kubernetes Node components</h5>
+<h4 id="kubernetes-node-components">Kubernetes Node components</h4>
 <ol>
 <li><strong>kubelet</strong> : An agent that runs on each node in the cluster. It makes sure that containers are running in a pod. It doesn’t manage containers which were not created by Kubernetes.</li>
 <li><strong>Container runtime</strong></li>
@@ -331,7 +331,7 @@ if (!doNotTrack) {
 <li><strong>Container Resource Monitoring</strong></li>
 <li><strong>Cluster-level logging</strong></li>
 </ol>
-<h5 id="kubernetes-objects">Kubernetes Objects</h5>
+<h4 id="kubernetes-objects">Kubernetes Objects</h4>
 <ol>
 <li>They are persistent entities in the Kubernetes system. Kubernetes uses these entities to represent the state of your cluster.</li>
 <li>By creating an object, you’re effectively telling the Kubernetes system what you want your cluster’s workload to look like; this is your cluster’s desired state.</li>
@@ -394,12 +394,12 @@ if (!doNotTrack) {
 <li><em>Name</em> is a client-provided string that refers to an object in a resource URL, such as <em>/api/v1/pods/some-name</em>. This becomes DNS_NAME?.</li>
 <li>Only one object of a given kind can have a given name at a time. However, if you delete the object, you can make a new object with the same name.</li>
 </ol>
-<h5 id="kubernetes-uids">Kubernetes UID&rsquo;s</h5>
+<h4 id="kubernetes-uids">Kubernetes UID&rsquo;s</h4>
 <ol>
 <li>They are a kubernetes <em>systems-generated strings to uniquely identify objects</em>.</li>
 <li>Every object created over the whole lifetime of a Kubernetes cluster has a <strong>distinct UID</strong>. It is intended to distinguish between historical occurrences of similar entities.</li>
 </ol>
-<h5 id="namespaces">Namespaces</h5>
+<h4 id="namespaces">Namespaces</h4>
 <ol>
 <li>Kubernetes supports multiple virtual clusters backed by the same physical cluster. These virtual clusters are called <strong>namespaces</strong>.</li>
 <li>Namespaces are intended for use in environments with many users spread across multiple teams, or projects.</li>
@@ -429,7 +429,7 @@ if (!doNotTrack) {
 <li><em>Namespace resources</em> are not themselves in a namespace.</li>
 <li><em>Low-level resources</em>, such as <em>nodes</em> and <em>persistentVolumes</em>, are <strong>not</strong> in any namespace.</li>
 </ol>
-<h5 id="services">Services</h5>
+<h4 id="services">Services</h4>
 <ol>
 <li>A <strong>Service</strong> in Kubernetes is an abstraction which defines a logical set of Pods, and a policy by which to access them. Services enable a <em>loose coupling between dependent Pods</em>.</li>
 <li>Although each Pod has a unique IP address, those IPs are not exposed outside the cluster without a Service. <em>Services allow your applications to receive traffic</em>.</li>
@@ -598,7 +598,7 @@ if (!doNotTrack) {
 </ul>
 </li>
 </ol>
-<h5 id="labels">Labels</h5>
+<h4 id="labels">Labels</h4>
 <ol>
 <li>Labels can be attached to objects at creation time or later on. also, they can be modified at any time.</li>
 <li>Labels are used to specify identifying attributes of objects.</li>
@@ -609,7 +609,7 @@ if (!doNotTrack) {
 <li>The <strong>kubernetes.io/</strong> and <strong>k8s.io/</strong> prefixes are reserved for Kubernetes core components.</li>
 <li>Valid label values must be 63 characters or less. They could be empty too.</li>
 </ol>
-<h5 id="label-selectors">Label Selectors</h5>
+<h4 id="label-selectors">Label Selectors</h4>
 <ol>
 <li>The client, or a user can identify a set of objects. The <strong>label selector</strong> is the core grouping primitive in Kubernetes.</li>
 <li>Following <em>types of label selectors</em> are supported: <strong>equality-based</strong> and <strong>set-based</strong>.
@@ -689,7 +689,7 @@ Kubectl: kubectl get pods -l 'environment in (production),tier in (frontend)'
 <li><em>Service</em> and <em>ReplicationController</em> does NOT support <em>set based label selectors</em>.</li>
 <li>Newer resources, such as <em>Job</em>, <em>Deployment</em>, <em>Replica Set</em>, and <em>Daemon Set</em>, support set-based label selectors.</li>
 </ol>
-<h5 id="field-selectors">Field Selectors</h5>
+<h4 id="field-selectors">Field Selectors</h4>
 <ol>
 <li>They let you select Kubernetes resources based on the value of one or more resource fields. Examples:</li>
 </ol>
@@ -702,7 +702,7 @@ kubectl get pods --field-selector status.phase=Running
 <li>Multiple resources can be filtered in one go. Also, multiple field selectors can be given using comma as separator. Example:</li>
 </ol>
 <pre><code>kubectl get statefulsets,services --field-selector=status.phase!=Running,spec.restartPolicy=Always
-</code></pre><h5 id="annotations">Annotations</h5>
+</code></pre><h4 id="annotations">Annotations</h4>
 <ol>
 <li>They store <em>non-identifying object data</em>. They <em>cannot</em> be used to target/select objects based on their value(s).</li>
 <li>The <em>metadata</em> in an annotation can be small or large, structured or unstructured, and can include characters not permitted by labels.</li>
@@ -715,18 +715,18 @@ kubectl get pods --field-selector status.phase=Running
 <li>Using <strong>Imperative object configuration</strong>: They operate on <em>Individual files</em></li>
 <li>Using <strong>Declarative object configuration</strong>: They operate on <em>Directories of files</em></li>
 </ol>
-<h5 id="imperative-commands">Imperative commands</h5>
+<h4 id="imperative-commands">Imperative commands</h4>
 <ol>
 <li>Used with kubectl with resource name in the command</li>
 </ol>
-<h5 id="imperative-object-configuration">Imperative object configuration</h5>
+<h4 id="imperative-object-configuration">Imperative object configuration</h4>
 <ol>
 <li>Used with kubectl with operation(create, replace, etc.) and single object config file.</li>
 <li>The object config file specified must contain a full definition of the object in YAML or JSON format.</li>
 <li>Multiple files can also be specified. Example:</li>
 </ol>
 <pre><code>kubectl delete -f nginx.yaml -f redis.yaml
-</code></pre><h5 id="declarative-object-configuration">Declarative object configuration</h5>
+</code></pre><h4 id="declarative-object-configuration">Declarative object configuration</h4>
 <ol>
 <li>Operates on object configuration files stored locally.</li>
 <li>The user does not define the operations to be taken on the files.</li>
@@ -743,7 +743,7 @@ kubectl get pods --field-selector status.phase=Running
 <li>Use command line flag <strong>-R</strong> to process directories recursively.</li>
 <li>These files are known as resource configs.</li>
 </ol>
-<h5 id="init-containers">Init Containers</h5>
+<h4 id="init-containers">Init Containers</h4>
 <ol>
 <li>They are <em>specialized containers that run before app containers</em>.</li>
 <li>Thwy can contain utilities or setup scripts, not present in the app image.</li>
