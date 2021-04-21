@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>product on The Dev Stuff</title>
+    <link>https://www.freakynit.github.io/tags/product/</link>
+    <description>Recent content in product on The Dev Stuff</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 03 Apr 2021 06:00:00 +0530</lastBuildDate><atom:link href="https://www.freakynit.github.io/tags/product/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Product Flaws That We Encounter Regularly</title>
+      <link>https://www.freakynit.github.io/posts/product-flaws-that-we-encounter-regularly/</link>
+      <pubDate>Sat, 03 Apr 2021 06:00:00 +0530</pubDate>
+      
+      <guid>https://www.freakynit.github.io/posts/product-flaws-that-we-encounter-regularly/</guid>
+      <description>A lot of us must have gotten irritated by such small, but so very obvious product/UX fails that we just can&amp;rsquo;t comprehend how can they be. Here is a summary of a few of those I have encountered, or know about.
+Enjoy
+ 1. Logout confirmation on a different page  You click logout The website shows/not-shows confirmation dialog You click yes The website takes you to another page telling you &amp;ldquo;It&amp;rsquo;s okay to not logout.</description>
+    </item>
+    
+  </channel>
+</rss>
